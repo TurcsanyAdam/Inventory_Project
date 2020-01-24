@@ -4,7 +4,9 @@ using System.Text;
 
 namespace Inventory_project
 {
-    class Product
+    abstract class Product
     {
+        private string name;
+        private int price;
     }
 }

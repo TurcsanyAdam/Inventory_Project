@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Inventory_project
 {
-    class BookProduct
+    class BookProduct : Product
     {
+        private int numOfPages;
     }
 }
