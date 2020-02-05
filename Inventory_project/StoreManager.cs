@@ -4,13 +4,9 @@ using System.Text;
 
 namespace Inventory_project
 {
-    class StoreManager : StorageCapable
+    class StoreManager
     {
         StorageCapable storageCapable;
-        public StoreManager()
-        {
-            
-        }
 
         public void addStorage(StorageCapable storage)
         {
@@ -19,20 +15,24 @@ namespace Inventory_project
 
         public void addCDProduct(string name, int price, int tracks)
         {
-
+            storageCapable.storeCdProduct(name, price, tracks);
         }        
         public void addBookProduct(string name, int price, int pages)
         {
+            storageCapable.storeCdProduct(name, price, pages);
 
         }
-        public string listProducts()
+        public void listProducts()
         {
-            return "";
+            foreach(Product product in storageCapable.getAllProduct())
+            {
+                Console.WriteLine(product);
+            }
         }
 
         public int GetTotalProductPrice()
         {
-            return 0;
+            return storageCapable.getAllProduct().Count;
         }
     }
 }

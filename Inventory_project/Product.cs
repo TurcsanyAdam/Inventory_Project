@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace Inventory_project
 {
-    abstract class Product
+    public abstract class Product
     {
-        private string name;
-        private int price;
+        public string name { get; set; }
+        public int price { get; set; }
+
+
     }
 }

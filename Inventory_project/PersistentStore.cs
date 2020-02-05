@@ -4,7 +4,11 @@ using System.Text;
 
 namespace Inventory_project
 {
-    class PersistentStore
+    public class PersistentStore : Store
     {
+        public override void storeProduct(Product product)
+        {
+            productList.Add(product);
+        }
     }
 }

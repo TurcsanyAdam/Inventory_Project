@@ -6,7 +6,14 @@ namespace Inventory_project
     {
         static void Main(string[] args)
         {
+            StorageCapable storageCapable = new PersistentStore();
+
             StoreManager storeManager = new StoreManager();
+            storeManager.addStorage(storageCapable);
+            storeManager.addCDProduct("ABC", 20, 20);
+            storeManager.addCDProduct("ABCfawfawf", 10, 10);
+            storeManager.addBookProduct("ABCcacac", 200, 200);
+            storeManager.addBookProduct("ABCacaw", 203, 203);
         }
     }
 }

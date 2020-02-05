@@ -1,11 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Inventory_project
 {
-    class BookProduct : Product
+    public class BookProduct : Product
     {
-        private int numOfPages;
+        public int NumOfPages { get; set; }
+
+        public BookProduct()
+        {
+
+        }
+
+
+        public BookProduct(string aName, int aPrice, int aSize)
+        {
+            name = aName;
+            price = aPrice;
+            NumOfPages = aSize;
+        }
+
     }
 }
