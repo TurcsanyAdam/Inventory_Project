@@ -6,7 +6,7 @@ namespace Inventory_project
     {
         static void Main(string[] args)
         {
-            StorageCapable storageCapable = new PersistentStore();
+            StorageCapable storageCapable = new CsvStore();
 
             StoreManager storeManager = new StoreManager();
             storeManager.addStorage(storageCapable);
@@ -14,6 +14,7 @@ namespace Inventory_project
             storeManager.addCDProduct("ABCfawfawf", 10, 10);
             storeManager.addBookProduct("ABCcacac", 200, 200);
             storeManager.addBookProduct("ABCacaw", 203, 203);
+            Console.WriteLine(storeManager.GetTotalProductPrice());
         }
     }
 }

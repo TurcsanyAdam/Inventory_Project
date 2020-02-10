@@ -13,7 +13,9 @@ namespace Inventory_project
     public abstract class Store : StorageCapable
     {
         public List<Product> productList = new List<Product>();
-        public static string filepath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Inventory_project.xml");
+        public static string filepathXML = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Inventory_project.xml");
+        public static string filepathCSV = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Inventory_project.csv");
+
 
         public Store()
         {
@@ -21,11 +23,17 @@ namespace Inventory_project
         }
         private void SaveToXml(Product product)
         {
-            using (Stream fs = new FileStream(filepath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
+            using (Stream fs = new FileStream(filepathXML, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None))
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(Store));
                 serializer.Serialize(fs, this);
             }
+        }
+        private void SaveToCsv(Product product)
+        {
+            string result = product.name + "," + product.price + "\n";
+            File.AppendAllText(filepathCSV, (result));
+
         }
 
         public abstract void storeProduct(Product product);
@@ -53,8 +61,15 @@ namespace Inventory_project
         public void store(Product product)
         {
             storeProduct(product);
-            SaveToXml(product);
+            if(GetType() == typeof(PersistentStore))
+            {
+                SaveToXml(product);
 
+            }
+            else
+            {
+                SaveToCsv(product);
+            }
         }
 
         public List<Product> getAllProduct()

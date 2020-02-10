@@ -32,7 +32,12 @@ namespace Inventory_project
 
         public int GetTotalProductPrice()
         {
-            return storageCapable.getAllProduct().Count;
+            int result = 0;
+            foreach(Product product in storageCapable.getAllProduct())
+            {
+                result += product.price;
+            }
+            return result;
         }
     }
 }
